@@ -1,0 +1,465 @@
+﻿@{
+    ViewData["Title"] = "Radio Buttons Page";
+    
+
+
+}
+
+<h1>Radio Buttons Page</h1>
+
+<form method="post">
+    <div>
+        @foreach (var radioSet in GetRadioSets())
+        {
+            int setNumber = 1; // Inițializați numărul setului radio
+            <div>
+                @foreach (var option in radioSet)
+                {
+                    <input type="radio" name="@option.Key" value="@option.Value" id="@($"option_{option.Key}_{option.Value}")" />
+                    <label for="@($"option_{option.Key}_{option.Value}")">@option.Value</label>
+                }
+            </div>
+            <br>
+            <br>
+            setNumber++; // Incrementați numărul setului radio pentru următoarea iterare
+        }
+    </div>
+    <button type="button" onclick="submitForm()">Submit</button>
+</form>
+<script>
+ 
+    function submitForm() {
+        // Initialize counters for each column
+        var columnCounts = Array.from({ length: 4 }, () => 0);
+
+        // Iterate through radio sets
+        var radioSets = document.querySelectorAll('input[type="radio"]');
+        var currentColumn = 0;
+        for (var i = 0; i < radioSets.length; i++) {
+            // If a radio button is checked, increment the counter for the current column
+            if (radioSets[i].checked) {
+                columnCounts[currentColumn]++;
+            }
+
+            // Move to the next column
+            currentColumn = (currentColumn + 1) % 4;
+        }
+
+        // Find the column with the maximum count of '1's
+        var maxColumn = columnCounts.indexOf(Math.max(...columnCounts));
+
+        // Redirect the user to a new page based on the column with the most '1's
+        switch (maxColumn) {
+            case 0:
+                window.location.href = "fericit.html";
+                break;
+            case 1:
+                window.location.href = "trist.html";
+                break;
+            case 2:
+                window.location.href = "hapciupalitic.html";
+                break;
+            case 3:
+                window.location.href = "<3din(ali ismail).html";
+                break;
+            default:
+                // Handle any unexpected case
+                break;
+        }
+    }
+</script>
+
+
+@{
+    // Metoda care returnează o listă de seturi radio
+    List<List<KeyValuePair<int, string>>> GetRadioSets()
+    {
+        List<List<KeyValuePair<int, string>>> radioSets = new List<List<KeyValuePair<int, string>>>();
+        for (int i = 1; i <= 40; i++)
+        {
+            switch (i)
+            {
+                case 1:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet1 = new List<KeyValuePair<int, string>>();
+                    radioSet1.Add(new KeyValuePair<int, string>(1, "a"));
+                    radioSet1.Add(new KeyValuePair<int, string>(1, "b"));
+                    radioSet1.Add(new KeyValuePair<int, string>(1, "c"));
+                    radioSet1.Add(new KeyValuePair<int, string>(1, "d"));
+                    radioSets.Add(radioSet1);
+                    break;
+                case 2:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet2 = new List<KeyValuePair<int, string>>();
+                    radioSet2.Add(new KeyValuePair<int, string>(2, "e"));
+                    radioSet2.Add(new KeyValuePair<int, string>(2, "f"));
+                    radioSet2.Add(new KeyValuePair<int, string>(2, "g"));
+                    radioSet2.Add(new KeyValuePair<int, string>(2, "h"));
+                    radioSets.Add(radioSet2);
+                    break;
+                // Continuă pentru fiecare caz până la 40
+                case 3:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet3 = new List<KeyValuePair<int, string>>();
+                    radioSet3.Add(new KeyValuePair<int, string>(3, "i"));
+                    radioSet3.Add(new KeyValuePair<int, string>(3, "j"));
+                    radioSet3.Add(new KeyValuePair<int, string>(3, "k"));
+                    radioSet3.Add(new KeyValuePair<int, string>(3, "l"));
+                    radioSets.Add(radioSet3);
+                    break;
+                case 4:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet4 = new List<KeyValuePair<int, string>>();
+                    radioSet4.Add(new KeyValuePair<int, string>(4, "m"));
+                    radioSet4.Add(new KeyValuePair<int, string>(4, "n"));
+                    radioSet4.Add(new KeyValuePair<int, string>(4, "o"));
+                    radioSet4.Add(new KeyValuePair<int, string>(4, "p"));
+                    radioSets.Add(radioSet4);
+                    break;
+                case 5:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet5 = new List<KeyValuePair<int, string>>();
+                    radioSet5.Add(new KeyValuePair<int, string>(5, "q"));
+                    radioSet5.Add(new KeyValuePair<int, string>(5, "r"));
+                    radioSet5.Add(new KeyValuePair<int, string>(5, "s"));
+                    radioSet5.Add(new KeyValuePair<int, string>(5, "t"));
+                    radioSets.Add(radioSet5);
+                    break;
+                case 6:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet6 = new List<KeyValuePair<int, string>>();
+                    radioSet6.Add(new KeyValuePair<int, string>(6, "u"));
+                    radioSet6.Add(new KeyValuePair<int, string>(6, "v"));
+                    radioSet6.Add(new KeyValuePair<int, string>(6, "w"));
+                    radioSet6.Add(new KeyValuePair<int, string>(6, "x"));
+                    radioSets.Add(radioSet6);
+                    break;
+                case 7:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet7 = new List<KeyValuePair<int, string>>();
+                    radioSet7.Add(new KeyValuePair<int, string>(7, "y"));
+                    radioSet7.Add(new KeyValuePair<int, string>(7, "z"));
+                    radioSet7.Add(new KeyValuePair<int, string>(7, "aa"));
+                    radioSet7.Add(new KeyValuePair<int, string>(7, "bb"));
+                    radioSets.Add(radioSet7);
+                    break;
+                case 8:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet8 = new List<KeyValuePair<int, string>>();
+                    radioSet8.Add(new KeyValuePair<int, string>(8, "cc"));
+                    radioSet8.Add(new KeyValuePair<int, string>(8, "dd"));
+                    radioSet8.Add(new KeyValuePair<int, string>(8, "ee"));
+                    radioSet8.Add(new KeyValuePair<int, string>(8, "ff"));
+                    radioSets.Add(radioSet8);
+                    break;
+                case 9:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet9 = new List<KeyValuePair<int, string>>();
+                    radioSet9.Add(new KeyValuePair<int, string>(9, "gg"));
+                    radioSet9.Add(new KeyValuePair<int, string>(9, "hh"));
+                    radioSet9.Add(new KeyValuePair<int, string>(9, "ii"));
+                    radioSet9.Add(new KeyValuePair<int, string>(9, "jj"));
+                    radioSets.Add(radioSet9);
+                    break;
+                case 10:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet10 = new List<KeyValuePair<int, string>>();
+                    radioSet10.Add(new KeyValuePair<int, string>(10, "kk"));
+                    radioSet10.Add(new KeyValuePair<int, string>(10, "ll"));
+                    radioSet10.Add(new KeyValuePair<int, string>(10, "mm"));
+                    radioSet10.Add(new KeyValuePair<int, string>(10, "nn"));
+                    radioSets.Add(radioSet10);
+                    break;
+                case 11:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet11 = new List<KeyValuePair<int, string>>();
+                    radioSet11.Add(new KeyValuePair<int, string>(11, "oo"));
+                    radioSet11.Add(new KeyValuePair<int, string>(11, "pp"));
+                    radioSet11.Add(new KeyValuePair<int, string>(11, "qq"));
+                    radioSet11.Add(new KeyValuePair<int, string>(11, "rr"));
+                    radioSets.Add(radioSet11);
+                    break;
+                case 12:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet12 = new List<KeyValuePair<int, string>>();
+                    radioSet12.Add(new KeyValuePair<int, string>(12, "ss"));
+                    radioSet12.Add(new KeyValuePair<int, string>(12, "tt"));
+                    radioSet12.Add(new KeyValuePair<int, string>(12, "uu"));
+                    radioSet12.Add(new KeyValuePair<int, string>(12, "vv"));
+                    radioSets.Add(radioSet12);
+                    break;
+                case 13:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet13 = new List<KeyValuePair<int, string>>();
+                    radioSet13.Add(new KeyValuePair<int, string>(13, "ww"));
+                    radioSet13.Add(new KeyValuePair<int, string>(13, "xx"));
+                    radioSet13.Add(new KeyValuePair<int, string>(13, "yy"));
+                    radioSet13.Add(new KeyValuePair<int, string>(13, "zz"));
+                    radioSets.Add(radioSet13);
+                    break;
+                case 14:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet14 = new List<KeyValuePair<int, string>>();
+                    radioSet14.Add(new KeyValuePair<int, string>(14, "aaa"));
+                    radioSet14.Add(new KeyValuePair<int, string>(14, "bbb"));
+                    radioSet14.Add(new KeyValuePair<int, string>(14, "ccc"));
+                    radioSet14.Add(new KeyValuePair<int, string>(14, "ddd"));
+                    radioSets.Add(radioSet14);
+                    break;
+                case 15:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet15 = new List<KeyValuePair<int, string>>();
+                    radioSet15.Add(new KeyValuePair<int, string>(15, "eee"));
+                    radioSet15.Add(new KeyValuePair<int, string>(15, "fff"));
+                    radioSet15.Add(new KeyValuePair<int, string>(15, "ggg"));
+                    radioSet15.Add(new KeyValuePair<int, string>(15, "hhh"));
+                    radioSets.Add(radioSet15);
+                    break;
+                case 16:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet16 = new List<KeyValuePair<int, string>>();
+                    radioSet16.Add(new KeyValuePair<int, string>(16, "iii"));
+                    radioSet16.Add(new KeyValuePair<int, string>(16, "jjj"));
+                    radioSet16.Add(new KeyValuePair<int, string>(16, "kkk"));
+                    radioSet16.Add(new KeyValuePair<int, string>(16, "lll"));
+                    radioSets.Add(radioSet16);
+                    break;
+                case 17:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet17 = new List<KeyValuePair<int, string>>();
+                    radioSet17.Add(new KeyValuePair<int, string>(17, "mmm"));
+                    radioSet17.Add(new KeyValuePair<int, string>(17, "nnn"));
+                    radioSet17.Add(new KeyValuePair<int, string>(17, "ooo"));
+                    radioSet17.Add(new KeyValuePair<int, string>(17, "ppp"));
+                    radioSets.Add(radioSet17);
+                    break;
+                case 18:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet18 = new List<KeyValuePair<int, string>>();
+                    radioSet18.Add(new KeyValuePair<int, string>(18, "qqq"));
+                    radioSet18.Add(new KeyValuePair<int, string>(18, "rrr"));
+                    radioSet18.Add(new KeyValuePair<int, string>(18, "sss"));
+                    radioSet18.Add(new KeyValuePair<int, string>(18, "ttt"));
+                    radioSets.Add(radioSet18);
+                    break;
+                case 19:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet19 = new List<KeyValuePair<int, string>>();
+                    radioSet19.Add(new KeyValuePair<int, string>(19, "uuu"));
+                    radioSet19.Add(new KeyValuePair<int, string>(19, "vvv"));
+                    radioSet19.Add(new KeyValuePair<int, string>(19, "www"));
+                    radioSet19.Add(new KeyValuePair<int, string>(19, "xxx"));
+                    radioSets.Add(radioSet19);
+                    break;
+                case 20:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet20 = new List<KeyValuePair<int, string>>();
+                    radioSet20.Add(new KeyValuePair<int, string>(20, "yyy"));
+                    radioSet20.Add(new KeyValuePair<int, string>(20, "zzz"));
+                    radioSet20.Add(new KeyValuePair<int, string>(20, "aaaa"));
+                    radioSet20.Add(new KeyValuePair<int, string>(20, "bbbb"));
+                    radioSets.Add(radioSet20);
+                    break;
+                case 21:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet21 = new List<KeyValuePair<int, string>>();
+                    radioSet21.Add(new KeyValuePair<int, string>(21, "cccc"));
+                    radioSet21.Add(new KeyValuePair<int, string>(21, "Opțiune B 1"));
+                    radioSet21.Add(new KeyValuePair<int, string>(21, "Opțiune C 1"));
+                    radioSet21.Add(new KeyValuePair<int, string>(21, "Opțiune D 1"));
+                    radioSets.Add(radioSet21);
+                    break;
+                case 22:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet22 = new List<KeyValuePair<int, string>>();
+                    radioSet22.Add(new KeyValuePair<int, string>(22, "Opțiune A 2"));
+                    radioSet22.Add(new KeyValuePair<int, string>(22, "Opțiune B 2"));
+                    radioSet22.Add(new KeyValuePair<int, string>(22, "Opțiune C 2"));
+                    radioSet22.Add(new KeyValuePair<int, string>(22, "Opțiune D 2"));
+                    radioSets.Add(radioSet22);
+                    break;
+                case 23:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet23 = new List<KeyValuePair<int, string>>();
+                    radioSet23.Add(new KeyValuePair<int, string>(23, "Opțiune A 1"));
+                    radioSet23.Add(new KeyValuePair<int, string>(23, "Opțiune B 1"));
+                    radioSet23.Add(new KeyValuePair<int, string>(23, "Opțiune C 1"));
+                    radioSet23.Add(new KeyValuePair<int, string>(23, "Opțiune D 1"));
+                    radioSets.Add(radioSet23);
+                    break;
+                case 24:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet24 = new List<KeyValuePair<int, string>>();
+                    radioSet24.Add(new KeyValuePair<int, string>(24, "Opțiune A 2"));
+                    radioSet24.Add(new KeyValuePair<int, string>(24, "Opțiune B 2"));
+                    radioSet24.Add(new KeyValuePair<int, string>(24, "Opțiune C 2"));
+                    radioSet24.Add(new KeyValuePair<int, string>(24, "Opțiune D 2"));
+                    radioSets.Add(radioSet24);
+                    break;
+                case 25:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet25 = new List<KeyValuePair<int, string>>();
+                    radioSet25.Add(new KeyValuePair<int, string>(25, "Opțiune A 1"));
+                    radioSet25.Add(new KeyValuePair<int, string>(25, "Opțiune B 1"));
+                    radioSet25.Add(new KeyValuePair<int, string>(25, "Opțiune C 1"));
+                    radioSet25.Add(new KeyValuePair<int, string>(25, "Opțiune D 1"));
+                    radioSets.Add(radioSet25);
+                    break;
+                case 26:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet26 = new List<KeyValuePair<int, string>>();
+                    radioSet26.Add(new KeyValuePair<int, string>(26, "Opțiune A 2"));
+                    radioSet26.Add(new KeyValuePair<int, string>(26, "Opțiune B 2"));
+                    radioSet26.Add(new KeyValuePair<int, string>(26, "Opțiune C 2"));
+                    radioSet26.Add(new KeyValuePair<int, string>(26, "Opțiune D 2"));
+                    radioSets.Add(radioSet26);
+                    break;
+                case 27:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet27 = new List<KeyValuePair<int, string>>();
+                    radioSet27.Add(new KeyValuePair<int, string>(27, "Opțiune A 1"));
+                    radioSet27.Add(new KeyValuePair<int, string>(27, "Opțiune B 1"));
+                    radioSet27.Add(new KeyValuePair<int, string>(27, "Opțiune C 1"));
+                    radioSet27.Add(new KeyValuePair<int, string>(27, "Opțiune D 1"));
+                    radioSets.Add(radioSet27);
+                    break;
+                case 28:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet28 = new List<KeyValuePair<int, string>>();
+                    radioSet28.Add(new KeyValuePair<int, string>(28, "Opțiune A 2"));
+                    radioSet28.Add(new KeyValuePair<int, string>(28, "Opțiune B 2"));
+                    radioSet28.Add(new KeyValuePair<int, string>(28, "Opțiune C 2"));
+                    radioSet28.Add(new KeyValuePair<int, string>(28, "Opțiune D 2"));
+                    radioSets.Add(radioSet28);
+                    break;
+                case 29:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet29 = new List<KeyValuePair<int, string>>();
+                    radioSet29.Add(new KeyValuePair<int, string>(29, "Opțiune A 1"));
+                    radioSet29.Add(new KeyValuePair<int, string>(29, "Opțiune B 1"));
+                    radioSet29.Add(new KeyValuePair<int, string>(29, "Opțiune C 1"));
+                    radioSet29.Add(new KeyValuePair<int, string>(29, "Opțiune D 1"));
+                    radioSets.Add(radioSet29);
+                    break;
+                case 30:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet30 = new List<KeyValuePair<int, string>>();
+                    radioSet30.Add(new KeyValuePair<int, string>(30, "Opțiune A 2"));
+                    radioSet30.Add(new KeyValuePair<int, string>(30, "Opțiune B 2"));
+                    radioSet30.Add(new KeyValuePair<int, string>(30, "Opțiune C 2"));
+                    radioSet30.Add(new KeyValuePair<int, string>(30, "Opțiune D 2"));
+                    radioSets.Add(radioSet30);
+                    break;
+                case 31:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet31 = new List<KeyValuePair<int, string>>();
+                    radioSet31.Add(new KeyValuePair<int, string>(31, "Opțiune A 1"));
+                    radioSet31.Add(new KeyValuePair<int, string>(31, "Opțiune B 1"));
+                    radioSet31.Add(new KeyValuePair<int, string>(31, "Opțiune C 1"));
+                    radioSet31.Add(new KeyValuePair<int, string>(31, "Opțiune D 1"));
+                    radioSets.Add(radioSet31);
+                    break;
+                case 32:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet32 = new List<KeyValuePair<int, string>>();
+                    radioSet32.Add(new KeyValuePair<int, string>(32, "Opțiune A 2"));
+                    radioSet32.Add(new KeyValuePair<int, string>(32, "Opțiune B 2"));
+                    radioSet32.Add(new KeyValuePair<int, string>(32, "Opțiune C 2"));
+                    radioSet32.Add(new KeyValuePair<int, string>(32, "Opțiune D 2"));
+                    radioSets.Add(radioSet32);
+                    break;
+                case 33:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet33 = new List<KeyValuePair<int, string>>();
+                    radioSet33.Add(new KeyValuePair<int, string>(33, "Opțiune A 1"));
+                    radioSet33.Add(new KeyValuePair<int, string>(33, "Opțiune B 1"));
+                    radioSet33.Add(new KeyValuePair<int, string>(33, "Opțiune C 1"));
+                    radioSet33.Add(new KeyValuePair<int, string>(33, "Opțiune D 1"));
+                    radioSets.Add(radioSet33);
+                    break;
+                case 34:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet34 = new List<KeyValuePair<int, string>>();
+                    radioSet34.Add(new KeyValuePair<int, string>(34, "Opțiune A 2"));
+                    radioSet34.Add(new KeyValuePair<int, string>(34, "Opțiune B 2"));
+                    radioSet34.Add(new KeyValuePair<int, string>(34, "Opțiune C 2"));
+                    radioSet34.Add(new KeyValuePair<int, string>(34, "Opțiune D 2"));
+                    radioSets.Add(radioSet34);
+                    break;
+                case 35:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet35 = new List<KeyValuePair<int, string>>();
+                    radioSet35.Add(new KeyValuePair<int, string>(35, "Opțiune A 1"));
+                    radioSet35.Add(new KeyValuePair<int, string>(35, "Opțiune B 1"));
+                    radioSet35.Add(new KeyValuePair<int, string>(35, "Opțiune C 1"));
+                    radioSet35.Add(new KeyValuePair<int, string>(35, "Opțiune D 1"));
+                    radioSets.Add(radioSet35);
+                    break;
+                case 36:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet36 = new List<KeyValuePair<int, string>>();
+                    radioSet36.Add(new KeyValuePair<int, string>(36, "Opțiune A 2"));
+                    radioSet36.Add(new KeyValuePair<int, string>(36, "Opțiune B 2"));
+                    radioSet36.Add(new KeyValuePair<int, string>(36, "Opțiune C 2"));
+                    radioSet36.Add(new KeyValuePair<int, string>(36, "Opțiune D 2"));
+                    radioSets.Add(radioSet36);
+                    break;
+                case 37:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet37 = new List<KeyValuePair<int, string>>();
+                    radioSet37.Add(new KeyValuePair<int, string>(37, "Opțiune A 1"));
+                    radioSet37.Add(new KeyValuePair<int, string>(37, "Opțiune B 1"));
+                    radioSet37.Add(new KeyValuePair<int, string>(37, "Opțiune C 1"));
+                    radioSet37.Add(new KeyValuePair<int, string>(37, "Opțiune D 1"));
+                    radioSets.Add(radioSet37);
+                    break;
+                case 38:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet38 = new List<KeyValuePair<int, string>>();
+                    radioSet38.Add(new KeyValuePair<int, string>(38, "Opțiune A 2"));
+                    radioSet38.Add(new KeyValuePair<int, string>(38, "Opțiune B 2"));
+                    radioSet38.Add(new KeyValuePair<int, string>(38, "Opțiune C 2"));
+                    radioSet38.Add(new KeyValuePair<int, string>(38, "Opțiune D 2"));
+                    radioSets.Add(radioSet38);
+                    break;
+                case 39:
+                    // Set radio buttons pentru cazul 1
+                    List<KeyValuePair<int, string>> radioSet39 = new List<KeyValuePair<int, string>>();
+                    radioSet39.Add(new KeyValuePair<int, string>(39, "Opțiune A 1"));
+                    radioSet39.Add(new KeyValuePair<int, string>(39, "Opțiune B 1"));
+                    radioSet39.Add(new KeyValuePair<int, string>(39, "Opțiune C 1"));
+                    radioSet39.Add(new KeyValuePair<int, string>(39, "Opțiune D 1"));
+                    radioSets.Add(radioSet39);
+                    break;
+                case 40:
+                    // Set radio buttons pentru cazul 2
+                    List<KeyValuePair<int, string>> radioSet40 = new List<KeyValuePair<int, string>>();
+                    radioSet40.Add(new KeyValuePair<int, string>(40, "Opțiune A 2"));
+                    radioSet40.Add(new KeyValuePair<int, string>(40, "Opțiune B 2"));
+                    radioSet40.Add(new KeyValuePair<int, string>(40, "Opțiune C 2"));
+                    radioSet40.Add(new KeyValuePair<int, string>(40, "Opțiune D 2"));
+                    radioSets.Add(radioSet40);
+                    break;
+                default:
+                    // Set radio buttons pentru orice alt caz
+                    List<KeyValuePair<int, string>> defaultRadioSet = new List<KeyValuePair<int, string>>();
+                    defaultRadioSet.Add(new KeyValuePair<int, string>(1, "Opțiune A default"));
+                    defaultRadioSet.Add(new KeyValuePair<int, string>(2, "Opțiune B default"));
+                    defaultRadioSet.Add(new KeyValuePair<int, string>(3, "Opțiune C default"));
+                    defaultRadioSet.Add(new KeyValuePair<int, string>(4, "Opțiune D default"));
+                    radioSets.Add(defaultRadioSet);
+                    break;
+            }
+            
+        }
+        return radioSets;
+
+    }
+    
+}
+
+    
+
+
+
+
